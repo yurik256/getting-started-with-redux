@@ -1,4 +1,4 @@
-import { counter } from "./counter";
+import { counter } from "./counter-reducer";
 
 it("reducer test", () => {
   expect(counter(0, { type: "INCREMENT" })).toBe(1);

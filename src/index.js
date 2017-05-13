@@ -3,7 +3,7 @@ import ReactDOM from "react-dom";
 import { createStore } from "redux";
 
 import { Counter } from "./Counter.js";
-import { counter as CounterReducer } from "./counter/reducer";
+import { counter as CounterReducer } from "./reducers/counter-reducer";
 
 const store = createStore(CounterReducer);
 
