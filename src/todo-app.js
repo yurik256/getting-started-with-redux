@@ -9,7 +9,7 @@ import { visibilityFilter } from "./reducers/visibility-filter-reducer";
 //   };
 // };
 
-const todoApp = combineReducers({
+export const todoApp = combineReducers({
   todos: todos,
   visibilityFilter: visibilityFilter
 });
