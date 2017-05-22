@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import FilterLink from "./FilterLink";
 import TodoList from "./TodoList";
+import AddTodo from "./AddTodo";
+import Footer from "./Footer";
 
 const getVisibleTodos = (todos, filter) => {
   switch (filter) {
@@ -29,48 +30,12 @@ class TodoApp extends Component {
 
     return (
       <div>
-        <input
-          type="text"
-          ref={node => {
-            this.input = node;
-          }}
-        />
-        <button
-          onClick={() => {
-            onAddTodo(this.input.value);
-            this.input.value = "";
-          }}
-        >
-          Add Todo
-        </button>
+        <AddTodo onAddClick={onAddTodo} />
         <TodoList todos={visibleTodos} onTodoClick={onToggleTodo} />
-        <p>
-          Show:
-          {" "}
-          <FilterLink
-            filter="SHOW_ALL"
-            currentFilter={visibilityFilter}
-            onFilterClick={onFilterClick}
-          >
-            All
-          </FilterLink>
-          {" "}
-          <FilterLink
-            filter="SHOW_ACTIVE"
-            currentFilter={visibilityFilter}
-            onFilterClick={onFilterClick}
-          >
-            Active
-          </FilterLink>
-          {" "}
-          <FilterLink
-            filter="SHOW_COMPLETED"
-            currentFilter={visibilityFilter}
-            onFilterClick={onFilterClick}
-          >
-            Completed
-          </FilterLink>
-        </p>
+        <Footer
+          visibilityFilter={visibilityFilter}
+          onFilterClick={onFilterClick}
+        />
       </div>
     );
   }

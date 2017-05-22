@@ -1,7 +1,7 @@
 import React from "react";
 
 const FilterLink = props => {
-  const { filter, currentFilter, children, onFilterClick } = props;
+  const { filter, currentFilter, children, onClick } = props;
   if (filter === currentFilter) {
     return <span>{children}</span>;
   }
@@ -10,7 +10,7 @@ const FilterLink = props => {
       href="#"
       onClick={e => {
         e.preventDefault();
-        onFilterClick(filter);
+        onClick(filter);
       }}
     >
       {children}
