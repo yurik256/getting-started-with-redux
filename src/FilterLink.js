@@ -1,6 +1,6 @@
 import React from "react";
 
-export const FilterLink = props => {
+const FilterLink = props => {
   const { filter, currentFilter, children, onFilterClick } = props;
   if (filter === currentFilter) {
     return <span>{children}</span>;
@@ -17,3 +17,5 @@ export const FilterLink = props => {
     </a>
   );
 };
+
+export default FilterLink;

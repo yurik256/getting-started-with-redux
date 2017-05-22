@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import { FilterLink } from "./FilterLink";
+import FilterLink from "./FilterLink";
+import TodoList from "./TodoList";
 
 const getVisibleTodos = (todos, filter) => {
   switch (filter) {
@@ -42,21 +43,7 @@ class TodoApp extends Component {
         >
           Add Todo
         </button>
-        <ul>
-          {visibleTodos.map(todo => (
-            <li
-              key={todo.id}
-              onClick={() => {
-                onToggleTodo(todo.id);
-              }}
-              style={{
-                textDecoration: todo.completed ? "line-through" : "none"
-              }}
-            >
-              {todo.text}
-            </li>
-          ))}
-        </ul>
+        <TodoList todos={visibleTodos} onTodoClick={onToggleTodo} />
         <p>
           Show:
           {" "}
