@@ -1,4 +1,4 @@
-import { todos } from "./todos-reducer";
+import { todos } from "./todos";
 
 it("test adding todo", () => {
   const stateBefore = [];
