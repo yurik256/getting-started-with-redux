@@ -18,24 +18,14 @@ const getVisibleTodos = (todos, filter) => {
 
 class TodoApp extends Component {
   render() {
-    const {
-      onAddTodo,
-      onToggleTodo,
-      onFilterClick,
-      todos,
-      visibilityFilter
-    } = this.props;
-
+    const { onAddTodo, onToggleTodo, todos, visibilityFilter } = this.props;
     const visibleTodos = getVisibleTodos(todos, visibilityFilter);
 
     return (
       <div>
         <AddTodo onAddClick={onAddTodo} />
         <TodoList todos={visibleTodos} onTodoClick={onToggleTodo} />
-        <Footer
-          visibilityFilter={visibilityFilter}
-          onFilterClick={onFilterClick}
-        />
+        <Footer />
       </div>
     );
   }

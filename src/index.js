@@ -1,10 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import { createStore } from "redux";
 import TodoApp from "./TodoApp";
-import { todoApp as todoAddReducer } from "./reducers/todo-app";
 
-const store = createStore(todoAddReducer);
+import { store } from "./todo-app-store";
 
 let nextTodoId = 0;
 
@@ -22,12 +20,6 @@ const render = () => {
         store.dispatch({
           type: "TOGGLE_TODO",
           id: id
-        });
-      }}
-      onFilterClick={filter => {
-        store.dispatch({
-          type: "SET_VISIBILITY_FILTER",
-          filter: filter
         });
       }}
       {...store.getState()}
