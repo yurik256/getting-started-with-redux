@@ -1,8 +1,31 @@
 import React, { Component } from "react";
+import { FilterLink } from "./FilterLink";
+
+const getVisibleTodos = (todos, filter) => {
+  switch (filter) {
+    case "SHOW_ALL":
+      return todos;
+    case "SHOW_COMPLETED":
+      return todos.filter(t => t.completed);
+    case "SHOW_ACTIVE":
+      return todos.filter(t => !t.completed);
+    default:
+      return todos;
+  }
+};
 
 class TodoApp extends Component {
   render() {
-    const { onAddTodo, onToggleTodo, todos } = this.props;
+    const {
+      onAddTodo,
+      onToggleTodo,
+      onFilterClick,
+      todos,
+      visibilityFilter
+    } = this.props;
+
+    const visibleTodos = getVisibleTodos(todos, visibilityFilter);
+
     return (
       <div>
         <input
@@ -20,7 +43,7 @@ class TodoApp extends Component {
           Add Todo
         </button>
         <ul>
-          {todos.map(todo => (
+          {visibleTodos.map(todo => (
             <li
               key={todo.id}
               onClick={() => {
@@ -34,6 +57,33 @@ class TodoApp extends Component {
             </li>
           ))}
         </ul>
+        <p>
+          Show:
+          {" "}
+          <FilterLink
+            filter="SHOW_ALL"
+            currentFilter={visibilityFilter}
+            onFilterClick={onFilterClick}
+          >
+            All
+          </FilterLink>
+          {" "}
+          <FilterLink
+            filter="SHOW_ACTIVE"
+            currentFilter={visibilityFilter}
+            onFilterClick={onFilterClick}
+          >
+            Active
+          </FilterLink>
+          {" "}
+          <FilterLink
+            filter="SHOW_COMPLETED"
+            currentFilter={visibilityFilter}
+            onFilterClick={onFilterClick}
+          >
+            Completed
+          </FilterLink>
+        </p>
       </div>
     );
   }

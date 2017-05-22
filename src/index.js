@@ -24,7 +24,13 @@ const render = () => {
           id: id
         });
       }}
-      todos={store.getState().todos}
+      onFilterClick={filter => {
+        store.dispatch({
+          type: "SET_VISIBILITY_FILTER",
+          filter: filter
+        });
+      }}
+      {...store.getState()}
     />,
     document.getElementById("root")
   );
