@@ -18,6 +18,12 @@ const render = () => {
           id: nextTodoId++
         });
       }}
+      onToggleTodo={id => {
+        store.dispatch({
+          type: "TOGGLE_TODO",
+          id: id
+        });
+      }}
       todos={store.getState().todos}
     />,
     document.getElementById("root")
