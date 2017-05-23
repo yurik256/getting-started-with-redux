@@ -16,6 +16,16 @@ const getVisibleTodos = (todos, filter) => {
 };
 
 class VisibleTodoList extends Component {
+  componentDidMount() {
+    this.unsubscribe = store.subscribe(() => {
+      this.forceUpdate();
+    });
+  }
+
+  componentWillUnmount() {
+    this.unsubscribe();
+  }
+
   render() {
     const { todos, visibilityFilter } = store.getState();
 
