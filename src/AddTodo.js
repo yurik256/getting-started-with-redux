@@ -1,7 +1,9 @@
 import React from "react";
+import { store } from "./todo-app-store";
 
-const AddTodo = props => {
-  const { onAddClick } = props;
+let nextTodoId = 0;
+
+const AddTodo = () => {
   let input;
   return (
     <div>
@@ -13,7 +15,11 @@ const AddTodo = props => {
       />
       <button
         onClick={() => {
-          onAddClick(input.value);
+          store.dispatch({
+            type: "ADD_TODO",
+            text: input.value,
+            id: nextTodoId++
+          });
           input.value = "";
         }}
       >

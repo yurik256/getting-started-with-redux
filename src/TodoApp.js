@@ -1,20 +1,16 @@
-import React, { Component } from "react";
+import React from "react";
 import AddTodo from "./AddTodo";
 import Footer from "./Footer";
 import VisibleTodoList from "./VisibleTodoList";
 
-class TodoApp extends Component {
-  render() {
-    const { onAddTodo } = this.props;
-
-    return (
-      <div>
-        <AddTodo onAddClick={onAddTodo} />
-        <VisibleTodoList />
-        <Footer />
-      </div>
-    );
-  }
-}
+const TodoApp = () => {
+  return (
+    <div>
+      <AddTodo />
+      <VisibleTodoList />
+      <Footer />
+    </div>
+  );
+};
 
 export default TodoApp;
