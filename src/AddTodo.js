@@ -1,9 +1,9 @@
 import React from "react";
-import { store } from "./todo-app-store";
+import { connect } from "react-redux";
 
 let nextTodoId = 0;
 
-const AddTodo = () => {
+let AddTodo = ({ dispatch }) => {
   let input;
   return (
     <div>
@@ -15,7 +15,7 @@ const AddTodo = () => {
       />
       <button
         onClick={() => {
-          store.dispatch({
+          dispatch({
             type: "ADD_TODO",
             text: input.value,
             id: nextTodoId++
@@ -28,5 +28,19 @@ const AddTodo = () => {
     </div>
   );
 };
+
+// const mapStateToProps = state => {
+//   return {};
+// };
+
+// const mapDispatchToProps = dispatch => {
+//   return {
+//     dispatch
+//   };
+// };
+
+// AddTodo = connect(mapStateToProps, mapDispatchToProps)(AddTodo);
+
+AddTodo = connect()(AddTodo);
 
 export default AddTodo;
